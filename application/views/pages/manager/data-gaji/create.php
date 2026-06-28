@@ -19,9 +19,10 @@
                             <select
                                 id="id_karyawan"
                                 name="id_karyawan"
-                                class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                                class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                                required>
                                 <option value="">Pilih Karyawan</option>
-                                <?php foreach ($data_karyawan as $item): ?>
+                                <?php foreach ($data_karyawan as $item): ?>d
                                     <option value="<?= $item->id ?>"> <?= $item->nama ?> </option>
                                 <?php endforeach; ?>
                             </select>

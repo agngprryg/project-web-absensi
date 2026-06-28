@@ -19,7 +19,7 @@
 
                 <select name="tahun" class="px-3 py-1.5 text-xs border-2 border-gray-200 rounded-md" required>
                     <option value="">-- Semua Tahun --</option>
-                    <?php for ($year = 2018; $year <= 2025; $year++): ?>
+                    <?php for ($year = 2018; $year <= 2030; $year++): ?>
                         <option value="<?= $year ?>" <?= ($tahun_aktif == $year) ? 'selected' : '' ?>><?= $year ?></option>
                     <?php endfor; ?>
                 </select>

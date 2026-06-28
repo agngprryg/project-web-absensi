@@ -16,14 +16,14 @@ class CPages extends CI_Controller
         $this->load->view('components/header.php');
         $this->load->view('components/navbar.php');
         $this->load->view('pages/guest/beranda.php');
-        $this->load->view('components/footer_guest.php');
+        // $this->load->view('components/footer_guest.php');
     }
 
     public function manager()
     {
         $data['total_karyawan'] = $this->MManager->count_all('data_karyawan');
         $data['total_cuti'] = $this->MManager->count_all('data_cuti');
-        $data['total_lamaran'] = $this->MManager->count_all('lamaran');
+        $data['total_kehadiran'] = $this->MManager->count_all('data_kehadiran');
         $data['total_gaji'] = $this->MManager->get_total_gaji_dibayar();
         $data['data_kinerja']  = $this->MManager->get_data_kinerja_with_karyawan();
 
@@ -39,6 +39,7 @@ class CPages extends CI_Controller
         $data['karyawan'] = $this->MKaryawan->get_by_id('data_karyawan', $id_karyawan);
         $data['kehadiran_hari_ini'] = $this->MKaryawan->sudah_check_in($id_karyawan);
         $data['riwayat'] = $this->MKaryawan->get_riwayat($id_karyawan);
+        $data['kinerja'] = $this->MKaryawan->get_kinerja($id_karyawan);
 
         // header('Content-Type: application/json');
         // echo json_encode($data);

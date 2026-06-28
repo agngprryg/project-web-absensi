@@ -1,11 +1,12 @@
 <div class="bg-white min-h-screen flex items-center justify-center p-4">
     <div class="bg-white rounded-[3rem] max-w-6xl w-[550px] md:flex-row overflow-hidden ">
         <div class="flex-1 px-10 py-16 md:py-20 md:px-16 flex flex-col justify-center">
-            <div class="flex flex-col justify-center items-center">
-                <img src="<?= base_url('assets/logo/logo-2.jpeg') ?>" alt="" class="w-[100px]">
-                <p class="text-3xl font-semibold text-black mb-8">
-                    Login
+            <div class="flex flex-col ">
+                <!-- <img src="<?= base_url('assets/logo/logo-1.png') ?>" alt="" class="w-[100px]"> -->
+                <p class="text-3xl font-semibold text-black mb-2" style="font-family: 'Fredoka One', cursive; line-height: 0.95;">
+                    Selamat Datang Kembali
                 </p>
+                <p class="text-xs font-semibold text-gray-400 mb-5">silahkan masukan data yang sesuai</p>
             </div>
             <div class="w-[300px] mt-5 flex flex-col justify-start font-semibold">
                 <?php if ($this->session->flashdata('message', 'error')) : ?>
@@ -14,7 +15,7 @@
             </div>
             <form class="space-y-8" method="post" action="<?= base_url('CAuth') ?>">
                 <div class="relative">
-                    <input class="w-full border border-gray-300 rounded-full py-3 px-5 pr-12 text-sm text-gray-500 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-300"
+                    <input class="w-full border-b border-gray-500  py-3 px-5 pr-12 text-sm text-gray-500 placeholder-gray-400 focus:outline-none "
                         placeholder="Email"
                         type="email"
                         name="email" />
@@ -25,7 +26,7 @@
                 </div>
                 <div class="relative">
                     <input id="password"
-                        class="w-full border border-gray-300 rounded-full py-3 px-5 pr-12 text-sm text-gray-500 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-300"
+                        class="w-full border-b border-gray-500  py-3 px-5 pr-12 text-sm text-gray-500 placeholder-gray-400 focus:outline-none "
                         placeholder="Password"
                         type="password"
                         name="password" />
@@ -45,7 +46,7 @@
                         </span>
                     </label>
                 </div>
-                <button class="w-full bg-blue-700 text-white font-semibold rounded-full py-3 text-sm transition" type="submit">
+                <button class="w-full bg-[#6c30a1] text-white font-semibold rounded-lg py-3 text-sm transition" type="submit">
                     Log In
                 </button>
             </form>

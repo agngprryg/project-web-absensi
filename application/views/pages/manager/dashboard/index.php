@@ -18,7 +18,7 @@
                 <div class="mt-4">
                     <span class="inline-flex items-center text-sm font-medium text-green-600">
                         <i class="fas fa-arrow-up mr-1"></i>
-                        2 baru bulan ini
+                        <?= $total_karyawan ?> karyawan
                     </span>
                 </div>
             </div>
@@ -51,26 +51,27 @@
             <div class="bg-white rounded-lg shadow p-6">
                 <div class="flex items-center justify-between">
                     <div>
-                        <p class="text-sm font-medium text-gray-500">Lamaran Masuk</p>
-                        <p class="mt-1 text-3xl font-semibold text-gray-900"> <?= $total_lamaran ?> </p>
+                        <p class="text-sm font-medium text-gray-500">Total Kehadiran</p>
+                        <p class="mt-1 text-3xl font-semibold text-gray-900"> <?= $total_kehadiran ?> </p>
                     </div>
                     <div class="p-3 rounded-full bg-purple-100 text-purple-600">
-                        <i class="fas fa-envelope text-xl"></i>
+                        <i class="fas fa-user text-xl"></i>
                     </div>
                 </div>
                 <div class="mt-4">
-                    <a href="<?= base_url('manager/lamaran-masuk') ?>" class="inline-flex items-center text-sm font-medium text-blue-600">
+                    <a href="<?= base_url('manager/data-kehadiran') ?>" class="inline-flex items-center text-sm font-medium text-blue-600">
                         <i class="fas fa-eye mr-1"></i>
-                        Lihat pengajuan
+                        Lihat Kehadiran
                     </a>
                 </div>
             </div>
+
             <!-- Card Informasi Gaji -->
             <div class="bg-white rounded-lg shadow p-6">
                 <div class="flex items-center justify-between">
                     <div>
                         <p class="text-sm font-medium text-gray-500">Total Penggajian Bulan Ini</p>
-                        <p class="mt-1 text-2xl font-semibold text-gray-900"> <?= format_rupiah($total_gaji) ?> </p>
+                        <p class="mt-1 text-sm font-semibold text-gray-900"> <?= format_rupiah($total_gaji) ?> </p>
                     </div>
                     <div class="p-3 rounded-full bg-green-100 text-green-600">
                         <i class="fas fa-money-bill-wave text-xl"></i>
@@ -94,7 +95,7 @@
                     <table class="min-w-full divide-y divide-gray-200">
                         <thead class="bg-gray-50">
                             <tr>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">No</th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama Karyawan</th>
                                 <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Periode</th>
                                 <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Nilai Kinerja</th>
@@ -103,9 +104,9 @@
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200">
-                            <?php foreach ($data_kinerja as $item): ?>
+                            <?php foreach ($data_kinerja as $index => $item): ?>
                                 <tr>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">1</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"> <?= $index + 1 ?> </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <div class="flex gap-4">
                                             <img src="<?= base_url('uploads/karyawan/') . $item->foto ?>" alt="" class="size-9 rounded-full">

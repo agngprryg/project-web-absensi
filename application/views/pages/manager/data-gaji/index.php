@@ -1,10 +1,18 @@
 <div class="container mx-auto px-4 py-8">
     <div class="bg-white rounded-lg shadow overflow-hidden">
+
         <div class="px-6 py-4 border-b border-gray-200 flex justify-between items-center">
             <h2 class="text-xl font-semibold text-gray-800">Data gaji</h2>
-            <a href="<?= base_url('manager/data-gaji/create') ?>" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium">
-                <i class="fas fa-plus mr-2"></i>Tambah gaji
-            </a>
+            <div class="flex gap-2">
+                <a href="<?= base_url('manager/data-gaji/create') ?>" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium">
+                    <i class="fas fa-plus mr-2"></i>Tambah gaji
+                </a>
+                <a href="<?= base_url('CLaporanGaji/generate_pdf') ?>" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium">
+                    <i class="fas fa-file-pdf mr-2"></i>
+                    Export PDF
+                </a>
+            </div>
+
         </div>
 
         <div class="overflow-x-auto">

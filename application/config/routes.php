@@ -57,7 +57,6 @@ $route['lowongan/detail/(:num)'] = 'CGuest/detail_lowongan/$1';
 
 
 $route['karyawan/dashboard'] = 'CPages/karyawan';
-
 $route['karyawan/check-in'] = 'CKaryawan/check_in';
 $route['karyawan/check-out'] = 'CKaryawan/check_out';
 
@@ -67,9 +66,18 @@ $route['karyawan/ajukan-cuti/store'] = 'CKaryawan/ajukan_cuti_store';
 
 $route['karyawan/slip-gaji'] = 'CKaryawan/slip_gaji';
 
+$route['karyawan/scan-qrcode'] = 'CKaryawan/scan_qrcode';
+$route['karyawan/api_proses_absen_qr'] = 'CKaryawan/api_proses_absen_qr';
+$route['karyawan/validasi_scan_qr'] = 'CKaryawan/validasi_scan_qr';
+
 
 
 $route['manager/dashboard'] = 'CPages/manager';
+
+$route['manager/qrcode'] = 'CManager/qrcode';
+$route['manager/api_generate_qr'] = 'CManager/api_generate_qr';
+$route['manager/api_get_active_qr'] = 'CManager/api_get_active_qr';
+$route['manager/cleanup_qr'] = 'CManager/cleanup_qr';
 
 $route['manager/data-kehadiran'] = 'CDataKehadiran';
 $route['manager/data-kehadiran/create'] = 'CDataKehadiran/create';

@@ -9,12 +9,11 @@ class CKaryawan extends CI_Controller
         parent::__construct();
         $this->load->model('MKaryawan');
 
-        if (!$this->session->userdata('id_karyawan')) {
-            $this->session->set_flashdata('message', 'Kamu harus login dulu');
-            redirect('CAuth');
-        }
+        // if (!$this->session->userdata('id_karyawan')) {
+        //     $this->session->set_flashdata('message', 'Kamu harus login dulu');
+        //     redirect('CAuth');
+        // }
     }
-
 
     public function check_in()
     {
@@ -141,5 +140,67 @@ class CKaryawan extends CI_Controller
         $this->load->view('components/sidebar_karyawan.php');
         $this->load->view('pages/karyawan/slip-gaji/detail.php', $data);
         $this->load->view('components/footer.php');
+    }
+
+    public function scan_qrcode()
+    {
+        $id_karyawan = $this->session->userdata('id_karyawan');
+        $karyawan = $this->db->get_where('data_karyawan', ['id' => $id_karyawan])->row();
+        $kehadiran_hari_ini = $this->MKaryawan->sudah_check_in($id_karyawan);
+
+        $data = array(
+            'karyawan' => $karyawan,
+            'kehadiran_hari_ini' => $kehadiran_hari_ini
+        );
+
+        $this->load->view('components/header.php');
+        $this->load->view('components/sidebar_karyawan.php');
+        $this->load->view('pages/karyawan/scan-qrcode/index.php', $data);
+        $this->load->view('components/footer.php');
+    }
+
+    /**
+     * API: Proses absensi via QR scan
+     */
+    public function api_proses_absen_qr()
+    {
+        $this->output->set_content_type('application/json');
+
+        $token = $this->input->post('token');
+        $id_karyawan = $this->session->userdata('id_karyawan');
+
+        if (empty($token)) {
+            echo json_encode(['success' => false, 'message' => 'Token tidak ditemukan!']);
+            return;
+        }
+
+        $result = $this->MKaryawan->proses_absen_qr($token, $id_karyawan);
+        echo json_encode($result);
+    }
+
+    /**
+     * Validasi scan manual (fallback)
+     */
+    public function validasi_scan_qr()
+    {
+        $token = $this->input->get('token');
+
+        if (empty($token)) {
+            show_error('Token tidak valid', 400);
+        }
+
+        $id_karyawan = $this->session->userdata('id_karyawan');
+        $result = $this->MKaryawan->proses_absen_qr($token, $id_karyawan);
+
+        var_dump($result);
+        die;
+
+        if ($result['success']) {
+            $this->session->set_flashdata('success', $result['message']);
+        } else {
+            $this->session->set_flashdata('error', $result['message']);
+        }
+
+        redirect('karyawan/scan-qrcode');
     }
 }

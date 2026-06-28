@@ -1,5 +1,5 @@
 <div style="width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
-    <img src="<?= base_url('assets/logo/logo-2.jpeg') ?>" alt="" style="height: 80px; margin-bottom: 10px;">
+    <img src="<?= base_url('assets/logo/logo-1.png') ?>" alt="" style="height: 80px; margin-bottom: 10px;">
 
     <h2 style="font-family: Arial, sans-serif; margin-bottom: 20px;">
         Laporan Gaji <?= $bulan == null ? "Semua Bulan" : nama_bulan($bulan) . " Tahun " . $tahun ?>
@@ -75,7 +75,7 @@
 <!-- Tanda Tangan -->
 <div style="width: 100%; margin-top: 50px; font-family: Arial, sans-serif;">
     <div style="text-align: right;">
-        <p style="margin-bottom: 60px;">Tegal, <?= tanggal_indo(date('d M Y')) ?></p>
+        <p style="margin-bottom: 60px;">Bandung, <?= tanggal_indo(date('d M Y')) ?></p>
         <p style="margin-bottom: 80px;">Owner,</p>
         <p style="text-align: right; margin: 0;">_____________________</p>
     </div>

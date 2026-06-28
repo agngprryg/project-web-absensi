@@ -18,7 +18,6 @@
                         <tr>
                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">#</th>
                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Periode Cuti</th>
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Lama Cuti</th>
                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Alasan</th>
                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
                         </tr>
@@ -32,7 +31,6 @@
                                     <div class="text-sm text-gray-900"><?= $item->tanggal_mulai ?> </div>
                                     <div class="text-sm text-gray-500">s/d <?= $item->tanggal_selesai ?> </div>
                                 </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">5 hari</td>
                                 <td class="px-6 py-4 text-sm text-gray-500 max-w-xs truncate"><?= $item->alasan ?></td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"><?= $item->status ?> </td>
                             </tr>

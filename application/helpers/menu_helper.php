@@ -3,7 +3,7 @@
 function is_active($segment, $value)
 {
     return $segment == $value
-        ? 'bg-[#EEF1FF] text-[#4B5CF6] fill-white rounded-lg px-3 py-1.5 font-semibold'
+        ? 'border border-b-2 border-l-4 border-[#6c30a1]'
         : 'hover:text-[#4a4a6a] transition-colors';
 }
 

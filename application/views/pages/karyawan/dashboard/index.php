@@ -3,7 +3,6 @@
     <header class="bg-white shadow-sm">
         <div class="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8 flex justify-between items-center">
             <h1 class="text-xl font-bold text-gray-900">
-                <i class="fas fa-user-tie mr-2 text-blue-600"></i>
                 Dashboard Karyawan
             </h1>
             <div class="flex items-center space-x-4">
@@ -91,6 +90,34 @@
                         </div>
                     </div>
                 </div>
+                <div class="bg-white overflow-hidden shadow rounded-lg">
+                    <div class="px-4 py-5 sm:p-6">
+                        <h3 class="text-lg leading-6 font-medium text-gray-900 mb-4">
+                            <i class="fas fa-folder mr-2 text-blue-600"></i>
+                            Data Kinerja Bulan Ini
+                        </h3>
+                        <div class="space-y-4">
+                            <div>
+                                <p class="text-sm font-medium text-gray-500">Periode</p>
+                                <p class="text-sm text-gray-900">
+                                    <?= (!empty($kinerja->periode)) ? $kinerja->periode : '-' ?>
+                                </p>
+                            </div>
+                            <div>
+                                <p class="text-sm font-medium text-gray-500">Nilai</p>
+                                <p class="text-sm text-gray-900">
+                                    <?= (!empty($kinerja->nilai_kinerja)) ? $kinerja->nilai_kinerja : '-' ?>
+                                </p>
+                            </div>
+                            <div>
+                                <p class="text-sm font-medium text-gray-500">Catatan</p>
+                                <p class="text-sm text-gray-900">
+                                    <?= (!empty($kinerja->catatan)) ? $kinerja->catatan : '-' ?>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!-- Kolom Kanan - Fitur Absensi -->
@@ -99,7 +126,7 @@
                 <div class="bg-white overflow-hidden shadow rounded-lg">
                     <div class="px-4 py-5 sm:p-6">
                         <h3 class="text-lg leading-6 font-medium text-gray-900 mb-4">
-                            <i class="fas fa-fingerprint mr-2 text-blue-600"></i>
+                            <i class="fas fa-qrcode mr-2 text-blue-600"></i>
                             Absensi
                         </h3>
                         <div class="flex flex-col items-center">
@@ -109,9 +136,11 @@
                             <!-- Tombol Absensi -->
                             <div class="w-full max-w-md space-y-4">
                                 <?php if (empty($kehadiran_hari_ini)): ?>
-                                    <a href="<?= site_url('karyawan/check-in') ?>" class="w-full bg-green-600 hover:bg-green-700 text-white py-3 px-4 rounded-lg shadow-md flex items-center justify-center space-x-2">
-                                        <i class="fas fa-sign-in-alt"></i>
-                                        <span>Check In</span>
+                                    <a href="<?= site_url('karyawan/scan-qrcode') ?>" class="w-full px-3 py-2 flex justify-center items-center border border-b-4 border-r-4 border-[#6c30a1] rounded-md">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000" viewBox="0 0 256 256">
+                                            <path d="M224,40V80a8,8,0,0,1-16,0V48H176a8,8,0,0,1,0-16h40A8,8,0,0,1,224,40ZM80,208H48V176a8,8,0,0,0-16,0v40a8,8,0,0,0,8,8H80a8,8,0,0,0,0-16Zm136-40a8,8,0,0,0-8,8v32H176a8,8,0,0,0,0,16h40a8,8,0,0,0,8-8V176A8,8,0,0,0,216,168ZM40,88a8,8,0,0,0,8-8V48H80a8,8,0,0,0,0-16H40a8,8,0,0,0-8,8V80A8,8,0,0,0,40,88ZM80,72h96a8,8,0,0,1,8,8v96a8,8,0,0,1-8,8H80a8,8,0,0,1-8-8V80A8,8,0,0,1,80,72Zm8,96h80V88H88Z"></path>
+                                        </svg>
+                                        <span>Scan Code</span>
                                     </a>
                                 <?php elseif (empty($kehadiran_hari_ini->jam_keluar)): ?>
                                     <a href="<?= site_url('karyawan/check-out') ?>" class="w-full bg-red-600 hover:bg-red-700 text-white py-3 px-4 rounded-lg shadow-md flex items-center justify-center space-x-2">

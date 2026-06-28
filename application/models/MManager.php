@@ -426,4 +426,29 @@ class MManager extends CI_Model
             return $hari . " hari yang lalu";
         }
     }
+
+    public function generate_qr_absensi()
+    {
+        $this->load->model('MQrToken');
+        return $this->MQrToken->generate_qr();
+    }
+
+    /**
+     * Get QR aktif terbaru
+     */
+    public function get_active_qr()
+    {
+        $this->load->model('MQrToken');
+        return $this->MQrToken->get_active_qr();
+    }
+
+    /**
+     * Get semua riwayat QR
+     */
+    public function get_all_qr_tokens($limit = 20)
+    {
+        $this->db->order_by('id', 'DESC');
+        $this->db->limit($limit);
+        return $this->db->get('qr_tokens')->result();
+    }
 }

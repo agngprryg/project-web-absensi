@@ -88,4 +88,46 @@ class MKaryawan extends CI_Model
         $this->db->limit($limit);
         return $this->db->get('data_kehadiran')->result();
     }
+
+    public function get_kinerja($id_karyawan)
+    {
+        $this->db->where('id_karyawan', $id_karyawan);
+        $this->db->order_by('periode', 'DESC');
+        return $this->db->get('data_kinerja')->row();
+    }
+
+    public function proses_absen_qr($token, $id_karyawan)
+    {
+        // Load QR token model
+        $this->load->model('MQrToken');
+
+        // Validasi token
+        $qr_valid = $this->MQrToken->validasi_token($token);
+
+        if (!$qr_valid) {
+            return ['success' => false, 'message' => 'QR Code tidak valid atau sudah expired!'];
+        }
+
+        // Cek apakah sudah check-in hari ini
+        if ($this->sudah_check_in($id_karyawan)) {
+            return ['success' => false, 'message' => 'Anda sudah melakukan absen hari ini!'];
+        }
+
+        // Simpan absensi
+        $data = array(
+            'id_karyawan' => $id_karyawan,
+            'tanggal' => date('Y-m-d'),
+            'jam_masuk' => date('H:i:s'),
+            'status' => 'hadir',
+            'id_qr_token' => $qr_valid->id // optional, untuk tracking
+        );
+
+        $this->db->insert('data_kehadiran', $data);
+
+        if ($this->db->affected_rows() > 0) {
+            return ['success' => true, 'message' => 'Absen berhasil! Selamat bekerja.', 'waktu' => date('H:i:s')];
+        }
+
+        return ['success' => false, 'message' => 'Gagal menyimpan absensi!'];
+    }
 }

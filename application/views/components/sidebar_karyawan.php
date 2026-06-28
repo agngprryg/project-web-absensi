@@ -11,21 +11,8 @@
 
     <!-- Sidebar -->
     <aside id="sidebar" class="w-72 bg-white border-r border-gray-200 flex-col fixed lg:relative inset-y-0 left-0 transform -translate-x-full lg:translate-x-0 z-40 transition duration-200 ease-in-out">
-        <div class="flex items-center gap-2 px-6 py-5 border-b border-gray-200">
-            <div class="w-10 h-10 rounded-md bg-[#4B5CF6] flex items-center justify-center">
-                <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <rect height="18" rx="2" ry="2" width="18" x="3" y="3">
-                    </rect>
-                    <path d="M9 9h6v6H9z">
-                    </path>
-                </svg>
-            </div>
-            <h1 class="font-semibold text-gray-900 text-lg select-none">
-                PT KIMINDO
-                <span class="text-xs font-normal">
-                    ™
-                </span>
-            </h1>
+        <div class="flex justify-center items-center gap-2 px-6 py-5 border-b border-gray-200">
+            <img src="<?= base_url('assets/logo/logo-1.png') ?>" alt="" class="w-[100px]">
         </div>
 
         <nav class="mt-8 px-6 flex flex-col gap-6 text-sm font-medium select-none">
@@ -50,7 +37,15 @@
                 Slip Gaji
             </a>
 
-            <a href="<?= base_url('logout') ?>" class="flex items-center gap-3 rounded-md px-4 py-2 w-full <?= is_active($this->uri->segment(2), 'slip-gaji') ?> ">
+            <a href="<?= base_url('karyawan/scan-qrcode') ?>" class="flex items-center gap-3 rounded-md px-4 py-2 w-full <?= is_active($this->uri->segment(2), 'scan-qrcode') ?> ">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 0 1 3.75 9.375v-4.5ZM3.75 14.625c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5a1.125 1.125 0 0 1-1.125-1.125v-4.5ZM13.5 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 0 1 13.5 9.375v-4.5Z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 6.75h.75v.75h-.75v-.75ZM6.75 16.5h.75v.75h-.75v-.75ZM16.5 6.75h.75v.75h-.75v-.75ZM13.5 13.5h.75v.75h-.75v-.75ZM13.5 19.5h.75v.75h-.75v-.75ZM19.5 13.5h.75v.75h-.75v-.75ZM19.5 19.5h.75v.75h-.75v-.75ZM16.5 16.5h.75v.75h-.75v-.75Z" />
+                </svg>
+                Scan Qrcode
+            </a>
+
+            <a href="<?= base_url('logout') ?>" class="flex items-center gap-3 rounded-md px-4 py-2 w-full <?= is_active($this->uri->segment(2), 'logout') ?> ">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15" />
                 </svg>
